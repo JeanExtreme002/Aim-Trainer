@@ -9,3 +9,4 @@ By increasing your agility and accuracy, you get better results in shooting game
 This program was created in [Pygame](https://www.pygame.org) using version 1.9.4
 
 ![alt text](https://github.com/JeanExtreme002/Aim-Trainer/blob/master/photos/running.png)
+![alt text](https://github.com/JeanExtreme002/Aim-Trainer/blob/master/photos/gameover.png)
