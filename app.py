@@ -17,7 +17,7 @@ class App(object):
 
     DISPLAY_COLOR = (100,100,100)
     DISPLAY_GEOMETRY = [700,500]
-    DISPLAY_TITLE = "Aim Traning"
+    DISPLAY_TITLE = "Aim Coach"
 
     FRAMES_PER_SECOND = 60
 
