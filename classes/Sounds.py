@@ -9,11 +9,13 @@ class Sounds(object):
     """
 
     __cwd = getcwd()
-    
-    shooting_sound = 0
-    target_loss_sound = 1
-    without_ammunition_sound = 2
 
+    metal_hit_sound = 0
+    shooting_sound = 1
+    target_loss_sound = 2
+    without_ammunition_sound = 3
+
+    metal_hit_sound_path = join(__cwd,"sounds","metal_hit.wav")
     shooting_sound_path = join(__cwd,"sounds","shooting.wav")
     target_loss_sound_path = join(__cwd,"sounds","target_loss.wav")
     without_ammunition_sound_path = join(__cwd,"sounds","without_ammunition.wav")
@@ -22,6 +24,7 @@ class Sounds(object):
     def __init__(self):
 
         self.__sounds = {}
+        self.__sounds[self.metal_hit_sound] = mixer.Sound(self.metal_hit_sound_path)        
         self.__sounds[self.shooting_sound] = mixer.Sound(self.shooting_sound_path)
         self.__sounds[self.target_loss_sound] = mixer.Sound(self.target_loss_sound_path)
         self.__sounds[self.without_ammunition_sound] = mixer.Sound(self.without_ammunition_sound_path)

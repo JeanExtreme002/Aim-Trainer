@@ -133,6 +133,7 @@ class App(object):
 
                     # Se acertou, o número de acertos aumentará e o alvo será removido.
                     if hit:
+                        self.sounds.playSound(self.sounds.metal_hit_sound)
                         self.__shots.append(hit)
                         self.__targets.remove(target)
                         self.__hits += 1
