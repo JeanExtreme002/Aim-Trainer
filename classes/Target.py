@@ -51,9 +51,10 @@ class Target(object):
     def checkHit(self):
         """
         Checks if the mouse is within the coordinates (x1, y1, x2, y2) of the target. 
-        If so, the mouse coordinates will be returned relative to the target.
+        If so, the mouse coordinates will be returned as a percentage of the target.
         """
         mouse_pos = mouse.get_pos()
+        
         x1 = self.x-self.radius
         x2 = self.x+self.radius
         y1 = self.y-self.radius
@@ -61,7 +62,14 @@ class Target(object):
         
         if x1 <= mouse_pos[0] <= x2:
             if y1 <= mouse_pos[1] <= y2:
-                return [mouse_pos[0]-(self.x-self.radius),mouse_pos[1]-(self.y-self.radius)]
+                
+                # Calcula a posição do tiro em relação ao alvo
+                mouse_pos = [mouse_pos[0]-(self.x-self.radius),mouse_pos[1]-(self.y-self.radius)]
+
+                # Calcula a posição do tiro em porcentagem
+                percent = [100/(self.radius*2)*mouse_pos[0],100/(self.radius*2)*mouse_pos[1]]
+
+                return percent
         return False
 
 

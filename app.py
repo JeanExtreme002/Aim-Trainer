@@ -60,10 +60,15 @@ class App(object):
             )
         self.__surface = self.display.getSurface()
 
-        self.targetArea = TargetArea(
+        self.finalScoreboard = FinalScoreboard(
             self.__surface,
-            *self.TARGET_AREA_GEOMETRY,
-            self.TARGET_AREA_COLORS
+            *self.FINAL_SCOREBOARD_GEOMETRY,
+            self.FINAL_SCOREBOARD_FONT,
+            self.FINAL_SCOREBOARD_BORDER,
+            self.FINAL_SCOREBOARD_BORDER_COLOR,
+            self.FINAL_SCOREBOARD_TEXT_COLOR,
+            self.FINAL_SCOREBOARD_BACKGROUND_COLOR,
+            self.TARGET_COLORS
             )
 
         self.scoreboardText = Text(
@@ -73,15 +78,10 @@ class App(object):
             text_color=self.SCOREBOARD_COLOR
             )
 
-        self.finalScoreboard = FinalScoreboard(
+        self.targetArea = TargetArea(
             self.__surface,
-            *self.FINAL_SCOREBOARD_GEOMETRY,
-            self.FINAL_SCOREBOARD_FONT,
-            self.FINAL_SCOREBOARD_BORDER,
-            self.FINAL_SCOREBOARD_BORDER_COLOR,
-            self.FINAL_SCOREBOARD_TEXT_COLOR,
-            self.FINAL_SCOREBOARD_BACKGROUND_COLOR,
-            self.TARGET_RADIUS,self.TARGET_COLORS
+            *self.TARGET_AREA_GEOMETRY,
+            self.TARGET_AREA_COLORS
             )
 
         self.__timer = Timer()

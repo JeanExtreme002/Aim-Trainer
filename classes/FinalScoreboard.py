@@ -22,12 +22,10 @@ class FinalScoreboard(object):
 
     def __init__(self,surface,x1,y1,x2,y2,font=DEFAULT_TEXT_FONT,border=DEFAULT_BORDER_SIZE,
     border_color=DEFAULT_BORDER_COLOR,text_color=DEFAULT_TEXT_COLOR,
-    background_color=DEFAULT_BACKGROUND_COLOR,radius=TARGET_RADIUS,target_colors=DEFAULT_TARGET_COLORS):
+    background_color=DEFAULT_BACKGROUND_COLOR,target_colors=DEFAULT_TARGET_COLORS):
 
         """
         The final scoreboard is created using a position (x1, y1, x2, y2) of the surface.
-        When calling the builder method, you must pass the radius of the target used to 
-        calculate the location of the shot to display on a different radius target in the final scoreboard.
         """
 
         if type(surface) is Surface:
@@ -41,7 +39,6 @@ class FinalScoreboard(object):
         self.__border_color = border_color
         self.__text_color = text_color
         self.__background_color = background_color
-        self.__radius = radius
         self.__target_colors = target_colors
 
 
@@ -78,7 +75,7 @@ class FinalScoreboard(object):
             draw.rect(self.__surface,self.__border_color,border)
 
 
-    def __drawTarget(self,location,shots,radius,target_colors):
+    def __drawTarget(self,location,shots,target_colors):
         """
         Method for drawing a target with all shots hit in it.
         """
@@ -91,9 +88,10 @@ class FinalScoreboard(object):
         # Desenha no alvo todos os tiros acertados.
         for shot in shots:
 
+            # Calcula a posição do tiro no alvo: tamanho_do_alvo / 100 * posição_em_porcentagem_do_tiro
             shot_pos = []
-            shot_pos.append(int(shot[0]/radius*self.TARGET_RADIUS))
-            shot_pos.append(int(shot[1]/radius*self.TARGET_RADIUS))
+            shot_pos.append(int(self.TARGET_RADIUS*2/100*shot[0]))
+            shot_pos.append(int(self.TARGET_RADIUS*2/100*shot[1]))
 
             draw.circle(
                 self.__surface,(0,0,0),
@@ -105,8 +103,9 @@ class FinalScoreboard(object):
     def drawFinalScoreboard(self,hits,accuracy,targets_per_second,time,shots):
         """
         Method to draw the final scoreboard.
-        The "shots" argument must be a list containing the position (x, y) of 
-        each hit on the target whose radius was passed in the constructor method.
+
+        The "shots" argument must be a list containing the 
+        position (x, y) of each hit in percent.
         """
 
         background = rect.Rect(
@@ -143,7 +142,7 @@ class FinalScoreboard(object):
         self.__drawTarget(
             [self.__geometry[0]+self.TARGET_RADIUS+spacing_x*9,
             self.__geometry[1]+int(self.TARGET_RADIUS/2)*3],
-            shots,self.__radius,self.__target_colors
+            shots,self.__target_colors
             )
 
 
