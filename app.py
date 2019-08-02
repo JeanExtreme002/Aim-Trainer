@@ -267,7 +267,9 @@ class App(object):
         Method for generating target animation.
         """
 
-        for target in self.__targets:
+        targets = self.__targets.copy()
+        targets.reverse()
+        for target in targets:
             try:
 
                 # Caso não seja possível aumentar ainda mais o alvo,
