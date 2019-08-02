@@ -269,6 +269,7 @@ class App(object):
 
         targets = self.__targets.copy()
         targets.reverse()
+        
         for target in targets:
             try:
 
