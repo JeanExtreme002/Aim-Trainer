@@ -1,5 +1,4 @@
 from pygame import mixer
-from threading import Thread
 from os.path import join
 from os import getcwd
 
@@ -21,7 +20,10 @@ class Sounds(object):
     without_ammunition_sound_path = join(__cwd,"sounds","without_ammunition.wav")
     
 
-    def __init__(self):
+    def __init__(self,buffer=64):
+
+        # The "buffer" parameter must have a low value to decrease latency.
+        mixer.init(buffer=buffer)
 
         self.__sounds = {}
         self.__sounds[self.metal_hit_sound] = mixer.Sound(self.metal_hit_sound_path)        
@@ -47,7 +49,3 @@ class Sounds(object):
 
         mixer.music.load(filename)
         mixer.music.play()
-
-
-# The "buffer" parameter must have a low value to decrease latency.
-mixer.init(buffer=64)
