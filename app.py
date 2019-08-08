@@ -95,7 +95,6 @@ def setConfig():
         # Passa os valores do dicionário para a classe principal do programa como atributo
         for mainKey in file_config.keys():
             for key in file_config[mainKey].keys():
-                if 'color' in key.lower():
                 setattr(App,key.upper(),file_config[mainKey][key])
                     
     except:
