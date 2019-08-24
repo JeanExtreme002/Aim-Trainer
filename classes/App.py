@@ -130,7 +130,7 @@ class App(object):
                 # Verifica se o tiro acertou algum alvo.
                 for target in self.__targets.copy():
 
-                    # Obtêm a posição (x,y) do tiro em relação ao alvo
+                    # Obtém a posição (x,y) do tiro em relação ao alvo
                     hit = target.checkHit()
 
                     # Se acertou, o número de acertos aumentará e o alvo será removido.
@@ -170,7 +170,7 @@ class App(object):
 
         self.__start = False
 
-        # Obtêm as informações da última sessão para inserir os dados no placar final.
+        # Obtém as informações da última sessão para inserir os dados no placar final.
         hits = self.__hits
         accuracy = FinalScoreboard.getAccuracy(self.__hits+self.__failures,self.__hits)
         targets_per_second = self.__target_per_second
