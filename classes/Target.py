@@ -81,6 +81,8 @@ class Target(object):
         """
         Method to draw the target.
         """
+        if self.radius < 0:
+            raise ValueError("Radius must be a value >= 0")
 
         draw.circle(self.__surface,border_color,[self.x,self.y],int(self.radius+border)) # Desenha a borda do alvo.
         draw.circle(self.__surface,self.colors[0],[self.x,self.y],int(self.radius))
